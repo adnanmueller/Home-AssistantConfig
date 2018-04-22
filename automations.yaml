@@ -1,0 +1,16 @@
+- action: []
+  alias: Main Bedroom Light (Turn Off)
+  condition: []
+  id: '1520463079478'
+  trigger: []
+- action:
+  - data:
+      entity_id: light.level
+    service: light.toggle
+  alias: Main Bedroom Light (Toggle)
+  condition: []
+  id: '1520463156050'
+  trigger:
+  - payload: TOGGLE
+    platform: mqtt
+    topic: automations/cmnd/main_bedroom/light

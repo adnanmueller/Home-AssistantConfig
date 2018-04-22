@@ -1,0 +1,168 @@
+media_player.living_room_tv:
+  name:
+  platform: cast
+  unique_id: 0986c9de-6fbb-fbbf-0199-b98b4cbf713d
+media_player.living_room_speaker:
+  name:
+  platform: cast
+  unique_id: ce4f7a64-945b-63b7-e238-32b912522098
+media_player.bedroom_tv:
+  name:
+  platform: cast
+  unique_id: 4e841380-4c7e-405c-319b-d1cf7c392f89
+media_player.bedroom_speaker:
+  name:
+  platform: cast
+  unique_id: 774733f9-c2c8-bd82-78ed-638880c2f48b
+light.level:
+  name:
+  platform: zwave
+  unique_id: 2-72057594076299265
+light.level_2:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093076481
+light.level_3:
+  name:
+  platform: zwave
+  unique_id: 4-72057594109853697
+sensor.unknown:
+  name:
+  platform: zwave
+  unique_id: 2-72057594076495874
+sensor.alarm_type:
+  name:
+  platform: zwave
+  unique_id: 2-72057594077528065
+sensor.alarm_level:
+  name:
+  platform: zwave
+  unique_id: 2-72057594077528081
+sensor.unknown_2:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273090
+sensor.alarm_type_2:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305281
+sensor.alarm_level_2:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305297
+sensor.unknown_3:
+  name:
+  platform: zwave
+  unique_id: 4-72057594110050306
+sensor.alarm_type_3:
+  name:
+  platform: zwave
+  unique_id: 4-72057594111082497
+sensor.alarm_level_3:
+  name:
+  platform: zwave
+  unique_id: 4-72057594111082513
+light.fibaro_system_fgd212_dimmer_2_level:
+  name:
+  platform: zwave
+  unique_id: 2-144115188114227201
+light.fibaro_system_fgd212_dimmer_2_level_2:
+  name:
+  platform: zwave
+  unique_id: 3-144115188131004417
+light.fibaro_system_fgd212_dimmer_2_level_3:
+  name:
+  platform: zwave
+  unique_id: 4-144115188147781633
+sensor.fibaro_system_fgd212_dimmer_2_power:
+  name:
+  platform: zwave
+  unique_id: 2-72057594076496002
+sensor.fibaro_system_fgd212_dimmer_2_exporting:
+  name:
+  platform: zwave
+  unique_id: 2-72057594076496384
+sensor.fibaro_system_fgd212_dimmer_2_sourcenodeid:
+  name:
+  platform: zwave
+  unique_id: 2-72057594077528097
+sensor.fibaro_system_fgd212_dimmer_2_heat:
+  name:
+  platform: zwave
+  unique_id: 2-72057594077528177
+sensor.fibaro_system_fgd212_dimmer_2_power_management:
+  name:
+  platform: zwave
+  unique_id: 2-72057594077528241
+sensor.fibaro_system_fgd212_dimmer_2_system:
+  name:
+  platform: zwave
+  unique_id: 2-72057594077528257
+sensor.fibaro_system_fgd212_dimmer_2_power_2:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273218
+sensor.fibaro_system_fgd212_dimmer_2_exporting_2:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093273600
+sensor.fibaro_system_fgd212_dimmer_2_sourcenodeid_2:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305313
+sensor.fibaro_system_fgd212_dimmer_2_heat_2:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305393
+sensor.fibaro_system_fgd212_dimmer_2_power_management_2:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305457
+sensor.fibaro_system_fgd212_dimmer_2_system_2:
+  name:
+  platform: zwave
+  unique_id: 3-72057594094305473
+sensor.fibaro_system_fgd212_dimmer_2_power_3:
+  name:
+  platform: zwave
+  unique_id: 4-72057594110050434
+sensor.fibaro_system_fgd212_dimmer_2_exporting_3:
+  name:
+  platform: zwave
+  unique_id: 4-72057594110050816
+sensor.fibaro_system_fgd212_dimmer_2_sourcenodeid_3:
+  name:
+  platform: zwave
+  unique_id: 4-72057594111082529
+sensor.fibaro_system_fgd212_dimmer_2_heat_3:
+  name:
+  platform: zwave
+  unique_id: 4-72057594111082609
+sensor.fibaro_system_fgd212_dimmer_2_power_management_3:
+  name:
+  platform: zwave
+  unique_id: 4-72057594111082673
+sensor.fibaro_system_fgd212_dimmer_2_system_3:
+  name:
+  platform: zwave
+  unique_id: 4-72057594111082689
+sensor.fibaro_system_fgd212_dimmer_2_power_4:
+  name:
+  platform: zwave
+  unique_id: 2-72057594076479554
+sensor.fibaro_system_fgd212_dimmer_2_power_5:
+  name:
+  platform: zwave
+  unique_id: 3-72057594093256770
+sensor.fibaro_system_fgd212_dimmer_2_power_6:
+  name:
+  platform: zwave
+  unique_id: 4-72057594110033986
+media_player.brookes_iphone:
+  name:
+  platform: plex
+  unique_id: E6590B75-2033-49B6-AAC4-A1A1D02DE5CA
+media_player.adnans_iphone:
+  name:
+  platform: plex
+  unique_id: 8A7EF698-608D-49CE-A576-62D8C6A24337

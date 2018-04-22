@@ -1,0 +1,282 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret elevation
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Australia/Sydney
+  # Customization file
+  customize: !include customize.yaml
+
+mqtt:
+  broker: 127.0.0.1
+  username: homeassistant
+  password: !secret http_password
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  api_password: !secret http_password
+  # Secrets are defined in the file secrets.yaml
+  # api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+zwave:
+    usb_path: /dev/ttyACM0
+
+# Weather prediction
+sensor:
+  - platform: yr
+  - platform: darksky
+    api_key: !secret darksky_api
+    units: auto
+    monitored_conditions:
+      - summary
+      - temperature
+      - apparent_temperature
+      - temperature_max
+      - temperature_min
+      - precip_type
+      - precip_probability
+      - humidity
+      - uv_index
+  - platform: mqtt
+    state_topic: "home/sensornode1"
+    name: "SN1 Humidity"
+    unit_of_measurement: "%"
+    value_template: '{{ value_json.humidity | round(1) }}'
+
+  - platform: mqtt
+    state_topic: "home/sensornode1"
+    name: "SN1 LDR"
+    ##This sensor is not calibrated to actual LUX. Rather, this a map of the input voltage ranging from 0 - 1023.
+    unit_of_measurement: "LUX"
+    value_template: '{{ value_json.ldr }}'
+
+  - platform: mqtt
+    state_topic: "home/sensornode1"
+    name: "SN1 PIR"
+    value_template: '{{ value_json.motion }}'
+
+  - platform: mqtt
+    state_topic: "home/sensornode1"
+    name: "SN1 Temperature"
+    unit_of_measurement: "°C"
+    value_template: '{{ value_json.temperature | round(1) }}'
+
+  - platform: mqtt
+    state_topic: "home/sensornode1"
+    name: "SN1 Real Feel"
+    unit_of_measurement: "°C"
+    value_template: '{{ value_json.heatIndex | round(1) }}'
+
+  - platform: mqtt
+    state_topic: "home/sensornode2"
+    name: "SN2 Humidity"
+    unit_of_measurement: "%"
+    value_template: '{{ value_json.humidity | round(1) }}'
+
+  - platform: mqtt
+    state_topic: "home/sensornode2"
+    name: "SN2 LDR"
+    ##This sensor is not calibrated to actual LUX. Rather, this a map of the input voltage ranging from 0 - 1023.
+    unit_of_measurement: "LUX"
+    value_template: '{{ value_json.ldr }}'
+
+  - platform: mqtt
+    state_topic: "home/sensornode2"
+    name: "SN2 PIR"
+    value_template: '{{ value_json.motion }}'
+
+  - platform: mqtt
+    state_topic: "home/sensornode2"
+    name: "SN2 Temperature"
+    unit_of_measurement: "°C"
+    value_template: '{{ value_json.temperature | round(1) }}'
+
+  - platform: mqtt
+    state_topic: "home/sensornode2"
+    name: "SN2 Real Feel"
+    unit_of_measurement: "°C"
+    value_template: '{{ value_json.heatIndex | round(1) }}'
+
+  - platform: octoprint
+    name: OctoPrint
+    monitored_conditions:
+      - Current State
+      - Temperatures
+      - Job Percentage
+
+binary_sensor:
+  - platform: octoprint
+    monitored_conditions:
+      - Printing
+      - Printing Error
+
+camera:
+  - platform: mjpeg
+    name: Printer Camera
+    mjpeg_url: http://192.168.1.204/webcam/?action=stream
+    still_image_url: http://192.168.1.204/webcam/?action=snapshot
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+
+light:
+  - platform: mqtt
+    name: "Adnan Bedroom Lamp"
+    state_topic: "stat/sonoff1/POWER"
+    command_topic: "cmnd/sonoff1/power"
+    payload_on: "ON"
+    payload_off: "OFF"
+    optimistic: false
+    qos: 1
+    retain: true
+  - platform: mqtt
+    name: "Brooke Bedroom Lamp"
+    state_topic: "stat/sonoff2/POWER"
+    command_topic: "cmnd/sonoff2/power"
+    payload_on: "ON"
+    payload_off: "OFF"
+    optimistic: false
+    qos: 1
+    retain: true
+  - platform: mqtt_json
+    name: "SN1 LED"
+    state_topic: "home/sensornode1"
+    command_topic: "home/sensornode1/set"
+    brightness: true
+    flash: true
+    rgb: true
+    optimistic: false
+    qos: 0
+  - platform: mqtt_json
+    name: "SN2 LED"
+    state_topic: "home/sensornode2"
+    command_topic: "home/sensornode2/set"
+    brightness: true
+    flash: true
+    rgb: true
+    optimistic: false
+    qos: 0
+
+switch:
+  - platform: mqtt
+    name: "Bedroom Fan"
+    state_topic: "stat/sonoff3/POWER"
+    command_topic: "cmnd/sonoff3/power"
+    payload_on: "ON"
+    payload_off: "OFF"
+    optimistic: false
+    qos: 1
+    retain: true
+  - platform: mqtt
+    name: "Living Room Fan"
+    state_topic: "stat/sonoff4/POWER"
+    command_topic: "cmnd/sonoff4/power"
+    payload_on: "ON"
+    payload_off: "OFF"
+    optimistic: false
+    qos: 1
+    retain: true
+  - platform: mqtt
+    name: "Dog Run Mister"
+    state_topic: "stat/switch1/POWER"
+    command_topic: "cmnd/switch1/power"
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    qos: 1
+    retain: true
+  - platform: mqtt
+    name: "Dog Run Bowl"
+    state_topic: "stat/switch2/POWER"
+    command_topic: "cmnd/switch2/power"
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    qos: 1
+    retain: true
+  - platform: mqtt
+    name: "Dog Run Master"
+    state_topic: "stat/switch3/POWER"
+    command_topic: "cmnd/switch3/power"
+    payload_on: "1"
+    payload_off: "0"
+    optimistic: false
+    qos: 1
+    retain: true
+
+recorder:
+  db_url: mysql://homeassistantuser:password@127.0.0.1/homeassistant?charset=utf8
+
+google_assistant:
+  project_id: home-assistant-6e952
+  client_id: !secret google_client_id
+  access_token: !secret google_access_token
+  api_key: !secret google_api_key
+  exposed_domains:
+    - switch
+    - light
+  entity_config:
+    light.fibaro_system_fgd212_dimmer_2_level:
+      expose: false
+    light.fibaro_system_fgd212_dimmer_2_level_2:
+      expose: false
+    light.fibaro_system_fgd212_dimmer_2_level_3:
+      expose: false
+
+octoprint:
+  host: 192.168.1.204
+  api_key: !secret octoprint_api
+  bed: true
+  number_of_tools: 1
+weblink:
+  entities:
+    - name: OctoPi Home
+      url: http://192.168.1.204
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml

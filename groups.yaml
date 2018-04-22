@@ -1,0 +1,122 @@
+default_view:
+  name: Home
+  icon: mdi:home
+  view: yes
+  entities:
+    - group.bedroom_card
+    - group.living_room_card
+    - group.hallway_card
+    - group.backyard_card
+weather:
+  name: Weather
+  icon: mdi:cloud
+  view: yes
+  entities:
+    - group.weather_main
+    - group.weather_aux
+    - group.environment
+printer_view:
+  name: 3D Printer
+  icon: mdi:printer
+  view: yes
+  entities:
+    - group.printer_cam
+    - group.printer_link
+    - group.printer_status
+sensor_nodes_view:
+  name: Sensor Nodes
+  icon: mdi:thermostat-box
+  view: yes
+  entities:
+    - group.sensor_node_1_card
+    - group.sensor_node_2_card
+
+
+bedroom_card:
+  name: Bedroom
+  entities:
+    - light.level
+    - light.adnan_bedroom_lamp
+    - light.brooke_bedroom_lamp
+    - switch.bedroom_fan
+    - media_player.bedroom_tv
+living_room_card:
+  name: Living Room
+  entities:
+    - light.level_2
+    - switch.living_room_fan
+    - media_player.living_room_tv
+hallway_card:
+  name: Hallway
+  entities:
+    - light.level_3
+backyard_card:
+  name: Backyard
+  entities:
+    - switch.dog_run_master
+    - switch.dog_run_bowl
+    - switch.dog_run_mister
+sensor_node_1_card:
+  name: Sensor Node 1
+  entities:
+    - sensor.sn1_temperature
+    - sensor.sn1_humidity
+    - sensor.sn1_real_feel
+    - sensor.sn1_ldr
+    - sensor.sn1_pir
+    - light.sn1_led
+sensor_node_2_card:
+  name: Sensor Node 2
+  entities:
+    - sensor.sn2_temperature
+    - sensor.sn2_humidity
+    - sensor.sn2_real_feel
+    - sensor.sn2_ldr
+    - sensor.sn2_pir
+    - light.sn2_led
+
+
+printer_cam:
+  name: Camera
+  entities:
+    - camera.printer_camera
+
+printer_link:
+  name: OctoPi
+  entities:
+    - weblink.octopi_home
+
+printer_status:
+  name: Printer Status
+  entities:
+    - binary_sensor.octoprint_printing
+    - binary_sensor.octoprint_printing_error
+    - sensor.octoprint_current_state
+    - sensor.octoprint_job_percentage
+    - sensor.octoprint_actual_bed_temp
+    - sensor.octoprint_target_bed_temp
+    - sensor.octoprint_actual_tool0_temp
+    - sensor.octoprint_target_tool0_temp
+
+
+weather_main:
+  name: Currently
+  entities:
+  - sensor.dark_sky_temperature
+  - sensor.dark_sky_apparent_temperature
+  - sensor.dark_sky_humidity
+  - sensor.dark_sky_precip
+  - sensor.dark_sky_precip_intensity
+weather_aux:
+  name: Forecast
+  entities:
+  - sensor.dark_sky_summary
+  - sensor.dark_sky_precip_probability
+  - sensor.dark_sky_daily_high_temperature
+  - sensor.dark_sky_daily_low_temperature
+  - sensor.dark_sky_uv_index
+environment:
+  name: Environment
+  entities:
+    - sensor.yr_symbol
+    - sun.sun
